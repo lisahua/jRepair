@@ -3,39 +3,23 @@
  */
 package ece.utexas.edu.repair.instrument;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.util.HashMap;
+import java.io.File;
 
-public class BuildFailureMain {
+import org.apache.tools.ant.Main;
+import org.apache.tools.ant.Project;
+import org.apache.tools.ant.ProjectHelper;
+
+public class BuildFailureMain extends Main{
 
 	
-	public HashMap<String, Integer> readJUnitAntResult(String filePath) {
-		HashMap<String, Integer> failTests = new HashMap<String, Integer>();
-		try {
-			BufferedReader reader = new BufferedReader(new FileReader(filePath));
-			String line = "";
-			String testFile = "";
-			while ((line = reader.readLine()) != null) {
-				if (line.contains("[junit] Running"))
-					testFile = line.replace("[junit] Running", "").trim();
-				else if (line.contains("[junit]") && line.contains("Failures")) {
-					if (line.contains("Failures: 0"))
-						continue;
-					String[] tokens = line.split(",");
-					for (String s : tokens) {
-						if (s.contains("Failures:")) {
-							int number = Integer.parseInt(s.substring(s.indexOf(":") + 1).trim());
-							failTests.put(testFile, number);
-							break;
-						}
-					}
-				}
-			}
-			reader.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return failTests;
+	public void editTestTarget() {
+		File buildFile = new File("build.xml");
+		   Project p = new Project();
+		   p.setUserProperty("ant.file", buildFile.getAbsolutePath());
+		   p.init();
+		   ProjectHelper helper = ProjectHelper.getProjectHelper();
+		   p.addReference("ant.projectHelper", helper);
+		   helper.parse(p, buildFile);
+		   p.executeTarget(p.getDefaultTarget());
 	}
 }

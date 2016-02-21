@@ -14,10 +14,8 @@ public class BuildFailureReaderTest {
 	@Test
 	public void testReadJUnitAntResult() {
 		BuildFailureReader reader = new BuildFailureReader();
-		HashMap<String, Integer> failTests = reader
-				.readJUnitAntResult(PropertyJsonHandler.getInstance().getPropertyModel().getProjectPath() + "/tmp.txt");
-		for (Map.Entry<String, Integer> entry : failTests.entrySet()) {
-			System.out.println(entry.getKey() + "," + entry.getValue());
-		}
+		reader.readJUnitAntResult(
+				PropertyJsonHandler.getInstance().getPropertyModel().getProjectPath() + "/defects4j.bugInfo");
+		
 	}
 }
