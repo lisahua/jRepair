@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import ece.utexas.edu.repair.examples.findMax.FindMax;
+import ece.utexas.edu.repair.examples.nopol.FindMax;
 
 public class TestMax {
 	@Test

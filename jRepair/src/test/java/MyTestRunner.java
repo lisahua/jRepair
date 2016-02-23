@@ -2,7 +2,7 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-import ece.utexas.edu.repair.examples.findMax.TestMax;
+import ece.utexas.edu.repair.examples.nopol.TestMax;
 
 public class MyTestRunner {
   public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package ece.utexas.edu.repair.examples.findMedian;
+package ece.utexas.edu.repair.examples.nopol;
 
 import static org.junit.Assert.*;
 

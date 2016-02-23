@@ -1,10 +1,10 @@
-package ece.utexas.edu.repair.examples.findMax;
+package ece.utexas.edu.repair.examples.nopol;
 
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import ece.utexas.edu.repair.examples.findMax.FindMax;
+import ece.utexas.edu.repair.examples.nopol.FindMax;
 
 public class TestMax_with {
 	@Test
